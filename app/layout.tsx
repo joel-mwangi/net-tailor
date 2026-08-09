@@ -7,10 +7,10 @@ const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"]
 
 export const metadata: Metadata = {
   title: {
-    default: "Net Tailor",
-    template: "%s | Net Tailor",
+    default: "Curtain House | Tailored to Perfection",
+    template: "%s | Curtain House",
   },
-  description: "Net Tailor application workspace",
+  description: "Custom curtains designed, measured and professionally installed for beautiful homes and spaces.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
