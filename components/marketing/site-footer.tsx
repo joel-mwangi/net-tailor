@@ -42,8 +42,15 @@ export function SiteFooter() {
             </span>
           </Link>
           <p className="mt-5 max-w-[250px] text-[10px] leading-5 text-[#bdb5ac]">We design, tailor and install high quality curtains that bring beauty, comfort and elegance to your home or office.</p>
-          <div className="mt-4 flex gap-2">
-            {["f", "◎", "▶", "◉"].map((icon) => <span key={icon} className="flex h-6 w-6 items-center justify-center rounded-full bg-white/10 text-[10px] text-white">{icon}</span>)}
+          <div className="mt-4 flex gap-2" aria-label="Social media">
+            {[
+              ["f", "Facebook"],
+              ["◎", "Instagram"],
+              ["▶", "YouTube"],
+              ["◉", "TikTok"],
+            ].map(([icon, label]) => (
+              <span key={label} title={label} className="flex h-6 w-6 items-center justify-center rounded-full bg-white/10 text-[10px] text-white">{icon}</span>
+            ))}
           </div>
         </div>
 
@@ -83,8 +90,8 @@ export function SiteFooter() {
 
       <div className="border-t border-white/10">
         <div className="mx-auto flex max-w-[1240px] flex-col gap-2 px-6 py-4 text-[9px] text-[#8e8881] sm:flex-row sm:items-center sm:justify-between lg:px-8">
-          <p>© 2024 Curtain House. All Rights Reserved.</p>
-          <div className="flex gap-4"><Link href="/privacy">Privacy Policy</Link><Link href="/terms">Terms &amp; Conditions</Link></div>
+          <p>© {new Date().getFullYear()} Curtain House. All Rights Reserved.</p>
+          <div className="flex gap-4"><Link href="/privacy" className="hover:text-white">Privacy Policy</Link><Link href="/terms" className="hover:text-white">Terms &amp; Conditions</Link></div>
         </div>
       </div>
     </footer>
