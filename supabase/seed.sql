@@ -1,0 +1,2 @@
+-- Net Tailor local seed data.
+-- Keep this file safe to run repeatedly.
