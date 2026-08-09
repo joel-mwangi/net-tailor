@@ -13,27 +13,39 @@ export async function updateSession(request: NextRequest) {
           return request.cookies.getAll();
         },
         setAll(cookiesToSet) {
-          cookiesToSet.forEach(({ name, value }) => request.cookies.set(name, value));
+          cookiesToSet.forEach(({ name, value }) =>
+            request.cookies.set(name, value),
+          );
+
           response = NextResponse.next({ request });
-          cookiesToSet.forEach(({ name, value, options }) => response.cookies.set(name, value, options));
+          cookiesToSet.forEach(({ name, value, options }) =>
+            response.cookies.set(name, value, options),
+          );
         },
       },
     },
   );
 
-  const { data: { user } } = await supabase.auth.getUser();
-  const pathname = request.nextUrl.pathname;
-  const protectedRoute = pathname.startsWith("/dashboard");
-  const authRoute = ["/login", "/signup", "/forgot-password"].includes(pathname);
+  // Do not replace this with getSession(): getUser() validates the token
+  // against Supabase Auth and is the safer check for server-side routing.
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
-  if (protectedRoute && !user) {
+  const pathname = request.nextUrl.pathname;
+  const isProtectedRoute = pathname.startsWith("/dashboard");
+  const isAuthRoute = ["/login", "/signup", "/forgot-password"].includes(
+    pathname,
+  );
+
+  if (isProtectedRoute && !user) {
     const url = request.nextUrl.clone();
     url.pathname = "/login";
     url.searchParams.set("next", pathname);
     return NextResponse.redirect(url);
   }
 
-  if (authRoute && user) {
+  if (isAuthRoute && user) {
     const url = request.nextUrl.clone();
     url.pathname = "/dashboard";
     url.search = "";
