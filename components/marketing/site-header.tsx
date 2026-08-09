@@ -11,34 +11,59 @@ const links = [
   ["Contact", "/contact"],
 ] as const;
 
+function CurtainMark() {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 42 42" className="h-10 w-10 text-[#a97714]">
+      <path d="M9 6h24v5c-3 0-5 2-5 5v18c-2-1-4-2-7-2s-5 1-7 2V16c0-3-2-5-5-5V6Z" fill="none" stroke="currentColor" strokeWidth="1.5" />
+      <path d="M13 9v20M18 9v17M24 9v17M29 9v20" stroke="currentColor" strokeWidth="1" opacity=".8" />
+    </svg>
+  );
+}
+
 export function SiteHeader() {
   return (
-    <header className="relative z-20 border-b border-[#4d463f]/15 bg-[#f8f6f2]/90 backdrop-blur">
-      <div className="mx-auto flex min-h-[86px] max-w-7xl items-center justify-between gap-6 px-6 lg:px-10">
-        <Link href="/" className="shrink-0 text-[#28231f]">
-          <span className="block font-serif text-xl tracking-[0.12em] sm:text-2xl">CURTAIN HOUSE</span>
-          <span className="mt-1 block text-[9px] font-medium tracking-[0.28em] text-[#81786e]">TAILORED TO PERFECTION</span>
+    <header className="relative z-30 border-b border-[#2d2823]/10 bg-[#f7f4ef]/95 backdrop-blur">
+      <div className="mx-auto flex min-h-[62px] max-w-[1440px] items-center gap-5 px-5 lg:px-7">
+        <Link href="/" className="flex min-w-fit items-center gap-2.5 text-[#28231f]">
+          <CurtainMark />
+          <span>
+            <span className="block text-[16px] font-semibold tracking-[0.02em] sm:text-[18px]">CURTAIN HOUSE</span>
+            <span className="mt-0.5 block text-[8px] tracking-[0.18em] text-[#3e3934]">TAILORED TO PERFECTION</span>
+          </span>
         </Link>
 
-        <nav className="hidden items-center gap-5 text-[12px] font-medium xl:flex" aria-label="Primary navigation">
+        <nav className="ml-auto hidden items-center gap-7 text-[11px] font-medium xl:flex" aria-label="Primary navigation">
           {links.map(([label, href]) => (
-            <Link key={label} href={href} className="text-[#5f564d] transition hover:text-[#28231f]">
+            <Link
+              key={label}
+              href={href}
+              className={`relative whitespace-nowrap py-5 transition hover:text-[#a97714] ${label === "Home" ? "text-[#a97714]" : "text-[#28231f]"}`}
+            >
               {label}
+              {label === "Curtains" ? <span className="ml-1 text-[9px]">⌄</span> : null}
             </Link>
           ))}
         </nav>
 
-        <Link
-          href="/quote"
-          className="inline-flex shrink-0 items-center gap-2 rounded-sm bg-[#6b422c] px-4 py-3 text-xs font-semibold text-white transition hover:bg-[#573622] sm:px-5"
-        >
-          <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.8">
-            <rect x="3" y="4.5" width="18" height="16" rx="2" />
-            <path d="M16 2.5v4M8 2.5v4M3 9h18" />
-          </svg>
-          <span className="hidden sm:inline">Get a Free Quote</span>
-          <span className="sm:hidden">Quote</span>
-        </Link>
+        <div className="ml-auto flex items-center gap-3 xl:ml-4">
+          <button type="button" aria-label="Search" className="hidden h-9 w-9 items-center justify-center rounded-full text-[#28231f] transition hover:bg-black/5 sm:flex">
+            <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.7">
+              <circle cx="11" cy="11" r="6.5" />
+              <path d="m16 16 4.5 4.5" />
+            </svg>
+          </button>
+          <Link
+            href="/quote"
+            className="inline-flex shrink-0 items-center gap-2 rounded-md bg-[#ad7b19] px-3.5 py-2.5 text-[11px] font-semibold text-white shadow-sm transition hover:bg-[#936613] sm:px-4"
+          >
+            <svg aria-hidden="true" viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="1.8">
+              <rect x="3" y="4.5" width="18" height="16" rx="2" />
+              <path d="M16 2.5v4M8 2.5v4M3 9h18" />
+            </svg>
+            <span className="hidden sm:inline">Get a Free Quote</span>
+            <span className="sm:hidden">Quote</span>
+          </Link>
+        </div>
       </div>
     </header>
   );
