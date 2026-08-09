@@ -10,7 +10,7 @@ const rooms = [
   { name: "Hotel", image: "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=900&q=85" },
   { name: "Sheers", image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=85" },
   { name: "Blackout", image: "https://images.unsplash.com/photo-1617104678098-de229db51175?auto=format&fit=crop&w=900&q=85" },
-  { name: "Kids Room", image: "https://images.unsplash.com/photo-1617104678098-de229db51175?auto=format&fit=crop&w=900&q=85" },
+  { name: "Kids Room", image: "https://images.unsplash.com/photo-1596464716127-f2a82984de30?auto=format&fit=crop&w=900&q=85" },
 ];
 
 const featured = [
@@ -37,14 +37,11 @@ const steps = [
   ["5", "Installation", "Professional installation"],
 ];
 
-function SectionHeading({ eyebrow, title }: { eyebrow?: string; title: string }) {
+function SectionHeading({ title }: { title: string }) {
   return (
     <div className="mb-7 flex items-center justify-center gap-3 text-center">
       <span className="hidden h-px w-8 bg-[#c9a35a] sm:block" />
-      <div>
-        {eyebrow ? <p className="mb-1 text-[9px] font-medium uppercase tracking-[0.22em] text-[#9b741e]">{eyebrow}</p> : null}
-        <h2 className="font-serif text-[21px] font-semibold tracking-[0.01em] text-[#28231f] sm:text-[23px]">{title}</h2>
-      </div>
+      <h2 className="font-serif text-[21px] font-semibold tracking-[0.01em] text-[#28231f] sm:text-[23px]">{title}</h2>
       <span className="hidden h-px w-8 bg-[#c9a35a] sm:block" />
     </div>
   );
@@ -59,7 +56,7 @@ export default function MarketingHomePage() {
       <section aria-label="Curtain House benefits" className="border-b border-[#e4ded4] bg-white">
         <div className="mx-auto grid max-w-[1320px] grid-cols-2 divide-x divide-[#e6e0d7] lg:grid-cols-5">
           {trustItems.map(([icon, title, subtitle]) => (
-            <div key={title} className="flex min-h-[78px] items-center justify-center gap-3 px-3 py-4 lg:px-5">
+            <div key={title} className="flex min-h-[78px] items-center justify-center gap-3 border-b border-[#e6e0d7] px-3 py-4 last:border-b-0 lg:border-b-0 lg:px-5">
               <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#c9972f] font-serif text-[17px] text-[#ad7b19]">{icon}</span>
               <div className="leading-tight">
                 <p className="text-[11px] font-semibold">{title}</p>
@@ -75,12 +72,7 @@ export default function MarketingHomePage() {
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-7">
           {rooms.map((room) => (
             <Link key={room.name} href={`/shop?room=${room.name.toLowerCase().replaceAll(" ", "-")}`} className="group overflow-hidden rounded-md border border-[#e7e1d8] bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
-              <div
-                role="img"
-                aria-label={room.name}
-                className="aspect-[1.18] bg-cover bg-center transition duration-500 group-hover:scale-[1.02]"
-                style={{ backgroundImage: `url(${room.image})` }}
-              />
+              <div role="img" aria-label={room.name} className="aspect-[1.18] bg-cover bg-center transition duration-500 group-hover:scale-[1.02]" style={{ backgroundImage: `url(${room.image})` }} />
               <div className="px-2 py-2.5 text-center">
                 <h3 className="text-[11px] font-semibold">{room.name}</h3>
                 <span className="mt-1 block text-[9px] text-[#514a44]">Explore →</span>
@@ -94,10 +86,10 @@ export default function MarketingHomePage() {
         <SectionHeading title="FEATURED CURTAINS" />
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
           {featured.map((product) => (
-            <article key={product.name} className="overflow-hidden rounded-md border border-[#e6dfd6] bg-white shadow-sm">
+            <article key={product.name} className="overflow-hidden rounded-md border border-[#e6dfd6] bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
               <div className="relative aspect-[1.3] overflow-hidden bg-[#e8e0d6]">
-                <div role="img" aria-label={product.name} className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${product.image})` }} />
-                <button type="button" aria-label={`Save ${product.name}`} className="absolute right-2 top-2 flex h-7 w-7 items-center justify-center rounded-full bg-black/25 text-white backdrop-blur-sm">♡</button>
+                <div role="img" aria-label={product.name} className="absolute inset-0 bg-cover bg-center transition duration-500 hover:scale-105" style={{ backgroundImage: `url(${product.image})` }} />
+                <button type="button" aria-label={`Save ${product.name}`} className="absolute right-2 top-2 flex h-7 w-7 items-center justify-center rounded-full bg-black/25 text-white backdrop-blur-sm transition hover:bg-[#ad7b19]">♡</button>
               </div>
               <div className="p-2.5">
                 <h3 className="truncate text-[10px] font-semibold sm:text-[11px]">{product.name}</h3>
@@ -117,7 +109,10 @@ export default function MarketingHomePage() {
         <div className="rounded-lg bg-[#f3eee7] p-4 sm:p-5">
           <SectionHeading title="BEFORE & AFTER" />
           <div className="grid grid-cols-2 gap-1 overflow-hidden rounded-md">
-            {["https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=700&q=85", "https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?auto=format&fit=crop&w=700&q=85"].map((image, index) => (
+            {[
+              "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=700&q=85",
+              "https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?auto=format&fit=crop&w=700&q=85",
+            ].map((image, index) => (
               <div key={image} className="relative aspect-square bg-cover bg-center" style={{ backgroundImage: `url(${image})` }}>
                 <span className="absolute bottom-2 left-2 rounded bg-black/55 px-2 py-1 text-[9px] font-medium text-white">{index === 0 ? "Before" : "After"}</span>
               </div>
@@ -154,21 +149,20 @@ export default function MarketingHomePage() {
       </section>
 
       <section className="mx-auto max-w-[1240px] px-5 pb-10 sm:px-8">
-        <div
-          className="relative overflow-hidden rounded-xl bg-cover bg-center px-6 py-12 text-center text-white sm:px-10"
-          style={{ backgroundImage: "linear-gradient(rgba(35,25,17,.78),rgba(35,25,17,.78)), url(https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=1600&q=85)" }}
-        >
+        <div className="relative overflow-hidden rounded-xl bg-cover bg-center px-6 py-12 text-center text-white sm:px-10" style={{ backgroundImage: "linear-gradient(rgba(35,25,17,.76),rgba(35,25,17,.76)), url(https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=1600&q=85)" }}>
           <div className="relative z-10 mx-auto max-w-2xl">
             <div className="mx-auto mb-3 flex h-11 w-11 items-center justify-center rounded-full border border-[#d5ad59] bg-[#8c671d]/70">▣</div>
             <h2 className="font-serif text-3xl sm:text-4xl">Ready to Transform Your Home?</h2>
             <p className="mt-2 text-sm text-white/90">Book a free consultation and measurement with our experts today.</p>
             <div className="mt-5 flex flex-wrap justify-center gap-3">
-              <Link href="https://wa.me/254712345678" className="rounded-md bg-[#ad7b19] px-5 py-2.5 text-xs font-semibold text-white">◔ WhatsApp Us</Link>
-              <Link href="tel:+254712345678" className="rounded-md border border-white/70 px-5 py-2.5 text-xs font-semibold text-white">♧ Call Now</Link>
+              <a href="https://wa.me/254712345678" className="rounded-md bg-[#ad7b19] px-5 py-2.5 text-xs font-semibold text-white">◔ WhatsApp Us</a>
+              <a href="tel:+254712345678" className="rounded-md border border-white/70 px-5 py-2.5 text-xs font-semibold text-white">♧ Call Now</a>
             </div>
           </div>
         </div>
       </section>
+
+      <a href="https://wa.me/254712345678" aria-label="Chat with Curtain House on WhatsApp" className="fixed bottom-5 right-5 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-2xl text-white shadow-lg transition hover:scale-105">◔</a>
 
       <SiteFooter />
     </main>
