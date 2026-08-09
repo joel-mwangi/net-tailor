@@ -1,42 +1,67 @@
 import Link from "next/link";
 
+const heroImage =
+  "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=85";
+const avatars = [
+  "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=80&q=80",
+  "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=80&q=80",
+  "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=80&q=80",
+  "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=80&q=80",
+];
+
 export function Hero() {
   return (
-    <section className="relative overflow-hidden bg-[#d9d0c3]">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_35%,rgba(255,255,255,.55),transparent_34%),linear-gradient(115deg,#e8e1d8,#c9bcae)]" />
-      <div className="absolute inset-y-0 right-0 w-[58%] bg-[repeating-linear-gradient(90deg,rgba(255,255,255,.25)_0,rgba(255,255,255,.25)_9px,rgba(126,111,96,.08)_9px,rgba(126,111,96,.08)_28px)] opacity-80" />
+    <section className="relative min-h-[560px] overflow-hidden bg-[#f5f1eb] sm:min-h-[610px]">
+      <div
+        role="img"
+        aria-label="Elegant living room with tailored curtains"
+        className="absolute inset-y-0 right-0 w-full bg-cover bg-center lg:w-[62%]"
+        style={{ backgroundImage: `url(${heroImage})` }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#f7f3ed] via-[#f7f3ed]/95 via-42% to-[#f7f3ed]/10 lg:to-transparent" />
+      <div className="absolute inset-y-0 left-0 w-full bg-[#f7f3ed]/25 lg:w-[52%]" />
 
-      <div className="relative z-10 mx-auto flex min-h-[590px] max-w-7xl items-center px-6 py-20 lg:min-h-[650px] lg:px-10">
-        <div className="max-w-2xl">
-          <p className="mb-5 text-xs font-semibold uppercase tracking-[0.28em] text-[#6b5b4d]">Tailored to perfection</p>
-          <h1 className="max-w-xl font-serif text-5xl leading-[1.02] tracking-[-0.035em] text-[#28231f] sm:text-6xl lg:text-7xl">
-            Beautiful Curtains. Beautiful Homes.
+      <div className="relative z-10 mx-auto flex min-h-[560px] max-w-[1440px] items-center px-6 py-16 sm:min-h-[610px] lg:px-14">
+        <div className="max-w-[500px] pt-4 lg:pt-0">
+          <h1 className="font-serif text-[48px] leading-[1.02] tracking-[-0.035em] text-[#28231f] sm:text-[60px] lg:text-[64px]">
+            Beautiful Curtains.
+            <br />
+            Beautiful Homes.
           </h1>
-          <p className="mt-7 max-w-lg text-base leading-7 text-[#5b5148] sm:text-lg">
+          <p className="mt-6 max-w-[430px] text-[15px] leading-6 text-[#39322c] sm:text-base">
             Custom curtains designed and tailored for every space with elegance and care.
           </p>
 
-          <div className="mt-9 flex flex-wrap gap-3">
-            <Link href="/quote" className="inline-flex items-center rounded-sm bg-[#6b422c] px-7 py-3.5 text-sm font-semibold text-white transition hover:bg-[#573622]">
-              Request Free Quote <span className="ml-2" aria-hidden="true">→</span>
+          <div className="mt-7 flex flex-wrap gap-4">
+            <Link
+              href="/quote"
+              className="inline-flex items-center gap-2 rounded-md bg-[#ad7b19] px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#936613]"
+            >
+              Request Free Quote <span aria-hidden="true" className="text-lg leading-none">→</span>
             </Link>
-            <Link href="/shop" className="inline-flex items-center rounded-sm border border-[#6b422c]/45 bg-white/30 px-7 py-3.5 text-sm font-semibold text-[#4d392b] backdrop-blur transition hover:bg-white/60">
+            <Link
+              href="/shop"
+              className="inline-flex items-center rounded-md border border-[#554d46] bg-white/40 px-6 py-3.5 text-sm font-semibold text-[#28231f] backdrop-blur-sm transition hover:bg-white/75"
+            >
               View Collection
             </Link>
           </div>
 
-          <div className="mt-9 flex items-center gap-3">
-            <div className="flex -space-x-2" aria-hidden="true">
-              {["JD", "AM", "SK", "LW", "N"].map((initials, index) => (
-                <span key={initials} className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-[#d9d0c3] bg-[#8f7967] text-[9px] font-semibold text-white" style={{ opacity: 1 - index * 0.07 }}>
-                  {initials}
-                </span>
+          <div className="mt-7 flex items-center gap-3">
+            <div className="flex -space-x-2">
+              {avatars.map((avatar) => (
+                <div
+                  key={avatar}
+                  role="img"
+                  aria-label="Curtain House customer"
+                  className="h-8 w-8 rounded-full border-2 border-[#f7f3ed] bg-cover bg-center shadow-sm"
+                  style={{ backgroundImage: `url(${avatar})` }}
+                />
               ))}
             </div>
-            <div>
-              <p className="text-sm font-semibold text-[#3d332b]">500+ Happy Customers</p>
-              <p className="text-xs text-[#6f6258]">Trusted for beautiful, tailored spaces</p>
-            </div>
+            <p className="text-xs text-[#403932]">
+              <strong className="font-semibold">500+</strong> Happy Customers
+            </p>
           </div>
         </div>
       </div>
