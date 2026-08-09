@@ -1,0 +1,23 @@
+import Link from "next/link";
+
+export function SiteFooter() {
+  return (
+    <footer className="bg-[#28231f] text-[#f4f0ea]">
+      <div className="mx-auto grid max-w-7xl gap-12 px-6 py-16 sm:grid-cols-2 lg:grid-cols-4 lg:px-10">
+        <div className="lg:col-span-2">
+          <p className="font-serif text-2xl tracking-[0.08em]">NET TAILOR</p>
+          <p className="mt-5 max-w-sm text-sm leading-6 text-[#bcb3a8]">Thoughtful window treatments, measured and made for your space.</p>
+        </div>
+        <div>
+          <p className="text-xs uppercase tracking-[0.18em] text-[#8f867c]">Explore</p>
+          <div className="mt-5 grid gap-3 text-sm text-[#d8d1c8]"><Link href="/shop">Shop</Link><Link href="/services">Services</Link><Link href="/projects">Projects</Link><Link href="/about">About</Link></div>
+        </div>
+        <div>
+          <p className="text-xs uppercase tracking-[0.18em] text-[#8f867c]">Contact</p>
+          <div className="mt-5 grid gap-3 text-sm text-[#d8d1c8]"><Link href="/quote">Request a quote</Link><Link href="/contact">Contact us</Link><Link href="/faq">FAQ</Link></div>
+        </div>
+      </div>
+      <div className="border-t border-white/10"><div className="mx-auto max-w-7xl px-6 py-5 text-xs text-[#8f867c] lg:px-10">© {new Date().getFullYear()} Net Tailor. All rights reserved.</div></div>
+    </footer>
+  );
+}
