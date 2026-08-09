@@ -10,9 +10,13 @@ export const metadata: Metadata = {
     default: "Curtain House | Tailored to Perfection",
     template: "%s | Curtain House",
   },
-  description: "Custom curtains designed, measured and professionally installed for beautiful homes and spaces.",
+  description: "Custom curtains designed, measured, tailored and professionally installed for beautiful homes and spaces.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
-  return <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}><body className="min-h-full flex flex-col">{children}</body></html>;
+  return (
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
+      <body className="min-h-full flex flex-col">{children}</body>
+    </html>
+  );
 }
